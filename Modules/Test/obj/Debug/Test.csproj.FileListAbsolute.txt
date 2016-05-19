@@ -1,0 +1,14 @@
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\Test.dll.config
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\Test.dll
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\Test.pdb
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\EntityFramework.dll
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\EntityFramework.Extended.dll
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\EntityFramework.SqlServer.dll
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\EntityFramework.xml
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\EntityFramework.Extended.xml
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\EntityFramework.SqlServer.xml
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\bin\Debug\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\obj\Debug\Test.dll
+E:\Projects\Mr.肖.CMS\CMS\Modules\Test\obj\Debug\Test.pdb

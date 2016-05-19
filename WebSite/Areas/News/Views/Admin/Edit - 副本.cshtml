@@ -1,0 +1,145 @@
+﻿@model Modules.Article.Models.ViewModels.ArticleView
+
+<h2>编辑新闻</h2>
+
+@{
+    using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new {
+        ignore = ".ignore"
+    })) {
+        <div class="back-form-content">
+            <div class="back-form-item">
+                <div class="back-form-left">
+                    <span class="back-form-title">新闻标题：</span>
+                    <span>@Html.TextBoxFor(t => t.Title)</span>
+                    <span class="required">*</span>
+                    @Html.ValidationMessageFor(t => t.Title)
+                </div>
+                <div class="back-form-right">
+                    <span class="back-form-title">发布时间：</span>
+                    @Html.TextBoxFor(t => t.PublishTime)
+                    <span class="required">*</span>
+                    @Html.ValidationMessageFor(t => t.PublishTime)
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="back-form-item">
+                <div class="back-form-left">
+                    <span class="back-form-title">新闻副标题：</span>
+                    @Html.TextBoxFor(t => t.SubTitle)
+                    @Html.ValidationMessageFor(t => t.SubTitle)
+                </div>
+                <div class="back-form-right">
+                    <span class="back-form-title">过期时间：</span>
+                    @Html.TextBoxFor(t => t.ExpireDate)
+                    <span class="required">*</span>
+                    @Html.ValidationMessageFor(t => t.ExpireDate)
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="back-form-item">
+                <div class="back-form-left">
+                    <span class="back-form-title">是否为外部链接：</span>
+                    @Html.CheckBoxFor(t => t.IsExtURL)
+                    <span class="required">*</span>
+                    @Html.ValidationMessageFor(t => t.IsExtURL)
+                </div>
+                <div class="back-form-right">
+                    <span class="back-form-title">排序：</span>
+                    @Html.TextBoxFor(t => t.Order)
+                    <span class="required">*</span>
+                    @Html.ValidationMessageFor(t => t.Order)
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="back-form-item">
+                <div class="back-form-left">
+                    <div>
+                        <span class="back-form-title">外部链接地址：</span>
+                        @Html.TextBoxFor(t => t.ExtURL)
+                        @Html.ValidationMessageFor(t => t.ExtURL)
+                    </div>
+                    <div>
+                        <span class="back-form-title">是否置顶：</span>
+                        @Html.CheckBoxFor(t => t.IsSortTop)
+                        <span class="required">*</span>
+                        @Html.ValidationMessageFor(t => t.IsSortTop)
+                    </div>
+                    <div>
+                        <span class="back-form-title">新闻来源：</span>
+                        @Html.TextBoxFor(t => t.Source)
+                        @Html.ValidationMessageFor(t => t.Source)
+                    </div>
+                </div>
+                <div class="back-form-right">
+                    <span class="back-form-title">新闻关键字：</span>
+                    @Html.TextAreaFor(t => t.KeyWords, new {
+                   @class = "textarea3"
+               })
+                    @Html.ValidationMessageFor(t => t.KeyWords)
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+           
+            <div class="back-form-item">
+                <div class="back-form-left">
+                    <div>
+                        <span class="back-form-title">新闻作者：</span>
+                        @Html.TextBoxFor(t => t.Author)
+                        <span class="required">*</span>
+                        @Html.ValidationMessageFor(t => t.Author)
+                    </div>
+                    <div>
+                        <span class="back-form-title">新闻第二作者：</span>
+                        @Html.TextBoxFor(t => t.AuthorFirst)
+                        @Html.ValidationMessageFor(t => t.AuthorFirst)
+                    </div>
+                    <div>
+                        <span class="back-form-title">新闻图片作者：</span>
+                        @Html.TextBoxFor(t => t.AuthorPhoto)
+                        @Html.ValidationMessageFor(t => t.AuthorPhoto)
+                    </div>
+                    <div>
+                        <span class="back-form-title">新闻作者公司：</span>
+                        @Html.TextBoxFor(t => t.AuthorCompany)
+                        @Html.ValidationMessageFor(t => t.AuthorCompany)
+                    </div>
+                </div>
+                <div class="back-form-right">
+                    <span class="back-form-title">新闻描述：</span>
+                    @Html.TextAreaFor(t => t.Description, new {
+                   @class = "textarea4"
+               })
+                    @Html.ValidationMessageFor(t => t.Description)
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+            <div class="back-form-item">
+                <div>
+                    @Html.ValidationMessageFor(t => t.Content)
+                </div>
+                <div>
+                    @Html.TextAreaFor(t => t.Content, new {
+               @class = "textareafull"
+           })
+                </div>
+            </div>
+            @*<div class="clear">
+            </div>*@
+        </div>
+        <div class="back-form-input">
+            <input type="submit" value="保存" class="button" />
+            <input type="reset" value="重置" class="cancel" />
+            <input type="button" value="返回" class="cancel" />
+            <input type="button" id="btn" value="测试" />
+        </div>
+    }
+}
+@section style {
+    @Styles.Render("~/Areas/Article/Content/admin.css")
+}
+
+
+
+

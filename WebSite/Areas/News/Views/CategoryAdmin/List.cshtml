@@ -1,0 +1,55 @@
+﻿@using Mvc.Extensions.HtmlExtensions
+@model IEnumerable<Modules.News.Models.DataModels.NewsCategory>
+@{
+    ViewBag.Title = "List";
+}
+<script>
+    $(function() {
+        $(".addchild").click(function () {
+            alert("添加下级"+window.GridView.getDataKeyValue(this));
+        });
+        $(".edit").click(function () {
+            alert("编辑" + window.GridView.getDataKeyValue(this));
+        });
+        $(".delete").click(function () {
+            alert("删除" + window.GridView.getDataKeyValue(this));
+        });
+    });
+</script>
+
+
+<h2>新闻栏目列表</h2>
+
+@Html.ActionLink("添加一级栏目", "Edit")
+<div style="width: 1300px;">
+    @Html.GridView().InstallDataKey("datakeyclassname", "ID").AddDataSorce(Model).AddInputColumn(t => {
+    t.Title = "<input type=\"checkbox\" />  全选";
+    t.InputString = "<input type=\"checkbox\" />";
+    t.IsPrepose = true;
+    t.ClassName = "text_align_center width_100";
+}).AddInputColumn(t => {
+    t.Title = "操作";
+    t.ClassName = "text_align_center";
+    t.InputString = "<input class=\"btn-audit delete\" type=\"button\" value=\"删除\" /><input class=\"btn-audit edit\" type=\"button\" value=\"编辑\" /><input class=\"btn-audit addchild\" type=\"button\" value=\"添加下级\" />";
+}).AddTextColumn(t => {
+    t.Title = "名称";
+    t.ClassName = "text_align_center";
+    t.PropertyName = "Name";
+}).AddTextColumn(t => {
+    t.Title = "父级名称";
+    t.ClassName = "text_align_left";
+    t.PropertyName = "ParentID";
+})
+    @Html.PagerView().InstallConfig(t => {
+    t.AreaName = "News";
+    t.ControllerName = "CategoryAdmin";
+    t.ActionName = "List";
+    t.RouteValues = new {
+        PageSize = 10
+    };
+    t.CurrentPageIndex = 2;
+    t.PageSize = 2;
+    t.ItemCount = 10;
+})
+</div>
+

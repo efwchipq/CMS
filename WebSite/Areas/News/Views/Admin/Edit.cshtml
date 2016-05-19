@@ -1,0 +1,190 @@
+﻿@using Mvc.Extensions.Clients
+@using Mvc.Extensions.HtmlExtensions
+@model Modules.News.Models.ViewModels.NewsView
+@{
+    Client.RegistCss("/Areas/News/Content/admin.css", 1000);
+    Client.RegistScripts("/Scripts/Common/ColorBox/jquery.colorbox.js");
+    Client.RegistCss("/Scripts/Common/ColorBox/colorbox.css");
+}
+
+<h2>编辑新闻</h2>
+
+@{
+    using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new {
+        ignore = ".ignore"
+    })) {
+        @Html.AntiForgeryToken()
+        <div id="article-form">
+            @Html.Tab().AddTab(t => {
+           t.Title = "基本信息";
+           t.TargetSelecter = "#article-basicInformation";
+       }).AddTab(t => {
+           t.Title = "图片附件";
+           t.TargetSelecter = "#article_imgattachment";
+       }).AddTab(t => {
+           t.Title = "文件附件";
+           t.TargetSelecter = "#article_fileattachment";
+       })
+            <div id="article-basicInformation">
+                <div class="back-form-item">
+                    <div class="back-form-left">
+                        <span class="back-form-title">新闻标题：</span>
+                        @Html.TextBoxFor(t => t.Title, new {
+                       @class = "form-control"
+                   })
+                        <span class="required">*</span>
+                        @Html.ValidationMessageFor(t => t.Title)
+                    </div>
+                    <div class="back-form-right">
+                        <span class="back-form-title">发布时间：</span>
+                        @Html.DatePickerFor(t => t.PublishTime, new {
+                       @class = "form-control"
+                   })
+                        <span class="required">*</span>
+                        @Html.ValidationMessageFor(t => t.PublishTime)
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="back-form-item">
+                    <div class="back-form-left">
+                        <span class="back-form-title">新闻副标题：</span>
+                        @Html.TextBoxFor(t => t.SubTitle, new {
+                       @class = "form-control"
+                   })
+                        @Html.ValidationMessageFor(t => t.SubTitle)
+                    </div>
+                    <div class="back-form-right">
+                        <span class="back-form-title">过期时间：</span>
+                        @Html.DatePickerFor(t => t.ExpireDate, new {
+                       @class = "form-control"
+                   })
+                        <span class="required">*</span>
+                        @Html.ValidationMessageFor(t => t.ExpireDate)
+                    </div>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="back-form-item">
+                    <div class="back-form-left">
+                        <span class="back-form-title">是否为外部链接：</span>
+                        @Html.CheckBoxFor(t => t.IsExtURL)
+                        <span class="required">*</span>
+                        @Html.ValidationMessageFor(t => t.IsExtURL)
+                    </div>
+                    <div class="back-form-right">
+                        <span class="back-form-title">排序：</span>
+                        @Html.TextBoxFor(t => t.Order, new {
+                       @class = "form-control"
+                   })
+                        <span class="required">*</span>
+                        @Html.ValidationMessageFor(t => t.Order)
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="back-form-item">
+                    <div class="back-form-left">
+                        <div class="back-form-left-inline">
+                            <span class="back-form-title">外部链接地址：</span>
+                            @Html.TextBoxFor(t => t.ExtURL, new {
+                           @class = "form-control"
+                       })
+                            @Html.ValidationMessageFor(t => t.ExtURL)
+                        </div>
+                        <div class="back-form-left-inline">
+                            <span class="back-form-title">是否置顶：</span>
+                            @Html.CheckBoxFor(t => t.IsSortTop)
+                            <span class="required">*</span>
+                            @Html.ValidationMessageFor(t => t.IsSortTop)
+                        </div>
+                        <div class="back-form-left-inline">
+                            <span class="back-form-title">置顶过期时间：</span>
+                            @Html.DatePickerFor(t => t.SortTopExpireDate, new {
+                           @class = "form-control"
+                       })
+                    <span class="required">*</span>
+                    @Html.ValidationMessageFor(t => t.SortTopExpireDate)
+                </div>
+                <div class="back-form-left-inline">
+                    <span class="back-form-title">新闻来源：</span>
+                    @Html.TextBoxFor(t => t.Source, new {
+                           @class = "form-control"
+                       })
+                    @Html.ValidationMessageFor(t => t.Source)
+                </div>
+            </div>
+            <div class="back-form-right">
+                <span class="back-form-title">新闻关键字：</span>
+                @Html.TextAreaFor(t => t.KeyWords, new {
+                       @class = "form-control textarea4"
+                   })
+                @Html.ValidationMessageFor(t => t.KeyWords)
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="back-form-item">
+            <div class="back-form-left">
+                <div class="back-form-left-inline">
+                    <span class="back-form-title">新闻作者：</span>
+                    @Html.TextBoxFor(t => t.Author, new {
+                           @class = "form-control"
+                       })
+                    <span class="required">*</span>
+                    @Html.ValidationMessageFor(t => t.Author)
+                </div>
+                <div class="back-form-left-inline">
+                    <span class="back-form-title">新闻第二作者：</span>
+                    @Html.TextBoxFor(t => t.AuthorFirst, new {
+                           @class = "form-control"
+                       })
+                    @Html.ValidationMessageFor(t => t.AuthorFirst)
+                </div>
+                <div class="back-form-left-inline">
+                    <span class="back-form-title">新闻图片作者：</span>
+                    @Html.TextBoxFor(t => t.AuthorPhoto, new {
+                           @class = "form-control"
+                       })
+                    @Html.ValidationMessageFor(t => t.AuthorPhoto)
+                </div>
+                <div class="back-form-left-inline">
+                    <span class="back-form-title">新闻作者公司：</span>
+                    @Html.TextBoxFor(t => t.AuthorCompany, new {
+                           @class = "form-control"
+                       })
+                    @Html.ValidationMessageFor(t => t.AuthorCompany)
+                </div>
+            </div>
+            <div class="back-form-right">
+                <span class="back-form-title">新闻描述：</span>
+                @Html.TextAreaFor(t => t.Description, new {
+                       @class = "form-control textarea4"
+                   })
+                @Html.ValidationMessageFor(t => t.Description)
+            </div>
+            <div class="clear">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="back-form-item">
+            <div>
+                @Html.ValidationMessageFor(t => t.Content)
+            </div>
+            <div>
+                @Html.TextEditorFor(t => t.Content)
+            </div>
+        </div>
+    </div>
+    <div id="article_imgattachment">
+        @Html.WebUploaderFor(t => t.Image)
+    </div>
+    <div id="article_fileattachment">
+        @Html.WebUploaderFor(t => t.AttachFile)
+    </div>
+    <div class="back-form-input">
+        <input type="submit" value="保存" class="btn_save" />
+        <input type="reset" value="重置" class="btn_cancel" />
+        <input type="button" value="返回" class="btn_cancel" />
+        <input type="button" value="删除" class="btn_delete" />
+    </div>
+</div>
+    }
+}

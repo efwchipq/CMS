@@ -1,0 +1,383 @@
+﻿/*-------------------------------------*/
+/*倒三角样式*/
+.label-cn .triangle, .label-en .triangle {
+    /*border-color：上 右 下 左；上 左右 下；上下 左右*/
+    /*上：区域为：正方形对角划分为4个区域，上就是指的上边的倒三角区域
+      transparent：透明
+     */
+    border-color: #da620a transparent transparent #da620a;
+    border-style: solid;
+    border-width: 1px;
+    display: inline-block;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 15px;
+    width: 0;
+    z-index: 1;
+}
+/**/
+/*-------------------------------------*/
+
+/*-------------------------------------*/
+/*必填*/
+.required {
+    color: red;
+}
+/*-------------------------------------*/
+
+/*-------------------------------------*/
+/*选项卡*/
+.TabMenu_OrangeYellow {
+    clear: both;
+}
+
+    .TabMenu_OrangeYellow li {
+        list-style: none;
+        float: left;
+        margin: 0px 0px 0px -1px;
+        position: relative;
+        padding: 5px 23px;
+    }
+
+    .TabMenu_OrangeYellow ul {
+        height: 39px;
+        background-color: #f7f7f7;
+        padding: 0px;
+        margin: 0px;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+    }
+
+    .TabMenu_OrangeYellow li.currentselect {
+        background: #fff none repeat scroll 0 0;
+        border-top: 2px solid #ff6600;
+        border-left: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        color: #3366cc;
+        font-weight: 800;
+        height: 38px;
+        line-height: 27px;
+    }
+
+.currentselectcontent {
+    border-color: #ddd;
+    border-style: solid;
+    border-width: 0 1px 1px;
+}
+/*-------------------------------------*/
+
+/*编辑器*/
+/*.ckeditor {
+    width: 60%;
+}*/
+/**/
+
+/*-------------------------------------*/
+/*按钮*/
+.btn_save {
+    -moz-user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin: 5px 8px 0px 0px;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: #3d8fcb;
+    min-width: 70px;
+}
+
+.btn_cancel {
+    -moz-user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin: 5px 8px 0px 0px;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: #9f9f9f;
+    min-width: 70px;
+}
+
+.btn_delete {
+    -moz-user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin: 5px 8px 0px 0px;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: #91b56f;
+    min-width: 70px;
+}
+/*-------------------------------------*/
+
+/*-------------------------------------*/
+/*GridView*/
+.table thead tr {
+    /*background: #f5f5f5;*/
+    background: #d9e3ed;
+    color: #666;
+}
+
+.table .text_align_center {
+    text-align: center;
+}
+
+.table .text_align_right {
+    text-align: right;
+}
+
+.table .text_align_left {
+    text-align: left;
+}
+
+.table .width_100 {
+    width: 80px;
+}
+
+.table input[type=button] {
+    margin-right: 5px;
+}
+
+.table .display_none {
+    display: none;
+}
+
+.table input.btn-audit {
+    display: inline-block;
+    padding: 3px 5px;
+    cursor: pointer;
+    min-width: 60px;
+    *overflow: visible:;
+    border: 1px solid #eee;
+    background: #e6eaed;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    color: #4a4a4a;
+    text-decoration: none;
+    margin-left: 10px;
+}
+/*-------------------------------------*/
+
+/*-------------------------------------*/
+/*pager style*/
+.i-pager {
+    height: 30px;
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: right;
+    clear: both;
+}
+
+    .i-pager a {
+        text-decoration: none;
+    }
+
+        .i-pager a, .i-pager a:link, .i-pager a:visited, .i-pager a:active {
+            color: #036;
+        }
+
+            .i-pager a:hover {
+                color: #fff;
+            }
+
+.i-pager-first, .i-pager-prev, .i-pager-next, .i-pager-last, .i-pager-item {
+    display: inline-block;
+    width: auto;
+    min-width: 1.5em;
+    height: 20px;
+    margin-left: 2px;
+    background: white;
+    border: solid 1px #dddddd;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.i-pager-prev, .i-pager-next, .i-pager-first, .i-pager-last {
+    padding: 0 5px;
+}
+
+    .i-pager-prev:hover {
+        background: #036cb4;
+        color: #ffffff;
+    }
+
+.i-pager-prev-disable:hover {
+}
+
+.i-pager-next:hover {
+    background: #036cb4;
+    color: #ffffff;
+}
+
+.i-pager-first:hover {
+    background: #036cb4;
+    color: #ffffff;
+}
+
+.i-pager-last:hover {
+    background: #036cb4;
+    color: #ffffff;
+}
+
+.i-pager-item-active {
+    background: #036cb4;
+}
+
+    .i-pager-item-active span {
+        color: #fff;
+    }
+
+.i-pager-item:link, a.i-pager-item:visited, a.i-pager-item:hover, a.i-pager-item:active, a.i-pager-item-active:link {
+    text-decoration: none;
+}
+
+.i-pager-item:hover {
+    background: #036cb4;
+    color: #ffffff;
+}
+
+.i-pager-info {
+    display: inline-block;
+    width: auto;
+    height: 22px;
+    margin-left: 3px;
+    font-family: "\5FAE\8F6F\96C5\9ED1","\5B8B\4F53";
+}
+
+.i-pager-current {
+    width: auto;
+    text-align: center;
+    display: inline-block;
+    padding-left: 5px;
+    line-height: 20px;
+    border-left: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+.i-pager-info-c {
+    color: Red;
+    width: auto;
+    text-align: center;
+    display: inline-block;
+    padding: 0 5px;
+    line-height: 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+.i-pager-info-p {
+    color: Blue;
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    line-height: 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+.i-pager-info-t {
+    color: Black;
+    display: inline-block;
+    width: auto;
+    text-align: center;
+    padding: 0 5px;
+    line-height: 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    background: #fff;
+}
+
+/*------------------datatable分页信息-------------------*/
+.paging_simple_numbers {
+    float: right;
+}
+
+.dataTables_info {
+    display: inline-block;
+}
+
+.dataTables_paginate {
+    display: inline-block;
+    float: right;
+}
+
+.paginate_button {
+}
+
+.first, .previous, .next, .last, .paginate_button {
+    background: white none repeat scroll 0 0;
+    border: 1px solid #dddddd;
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 2px;
+    min-width: 1.5em;
+    padding-left: 2px;
+    padding-right: 2px;
+    text-align: center;
+    width: auto;
+}
+
+.current {
+    background: #036cb4 none repeat scroll 0 0;
+    color: #fff;
+}
+/*-------------------------------------*/
+
+/*------------------------遮盖层----------------------*/
+.MaskingLayer1 {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    /*background-color: black;*/
+    z-index: 1001;
+    -moz-opacity: 0.7;
+    opacity: .70;
+    filter: alpha(opacity=70);
+}
+
+.MaskingLayer2 {
+    display: none;
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    /*width: 53%;
+    height: 49%;*/
+    padding: 8px;
+    z-index: 1002;
+    overflow: auto;
+}
+/*-------------------------------------*/

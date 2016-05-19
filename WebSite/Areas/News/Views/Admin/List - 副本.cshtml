@@ -1,0 +1,319 @@
+﻿@using Mvc.Extensions.Clients
+@using Mvc.Extensions.HtmlExtensions
+@model IEnumerable<Modules.News.Models.DataModels.BasicInformation>
+@{
+    Client.RegistCss("/Areas/News/Content/admin.css", 1000);
+    Client.RegistScripts("/Scripts/Common/ColorBox/jquery.colorbox.js");
+    Client.RegistCss("/Scripts/Common/ColorBox/colorbox.css");
+}
+
+<div>@ViewBag.Title</div>
+@ViewBag.Title2
+@Html.ActionLink("添加", "Edit")
+<script>
+    $(function () {
+        $(document).on('nodeSelected', "#newscategory_bootstraptree", function (event, data) {
+            var currentHref = data.href;
+            jQuery.dataTableLode(currentHref, "#test");
+        });
+    });
+</script>
+
+
+
+@*@{
+        using (Html.BeginForm("Edit", "Admin", FormMethod.Post, new {
+            ignore = ".ignore"
+        })) {
+            <div id="article-form">
+                @Html.Tab().AddTab(t => {
+               t.Title = "基本信息";
+               t.TargetSelecter = "#article-basicInformation";
+           }).AddTab(t => {
+               t.Title = "图片附件";
+               t.TargetSelecter = "#article_imgattachment";
+           }).AddTab(t => {
+               t.Title = "文件附件";
+               t.TargetSelecter = "#article_fileattachment";
+           })
+
+                <div id="article-basicInformation">
+                    @Html.WebUploaderFor(t => t.Image)
+                    <input type="button" value="测试1" id="test1" />
+                </div>
+                <div id="article_imgattachment">
+                    @Html.WebUploaderFor(t => t.Hits)
+                    <input type="button" value="测试2" id="test2" />
+                </div>
+                <div id="article_fileattachment">
+                    @Html.WebUploaderFor(t => t.IsExtURL)
+                    <input type="button" value="测试3" id="test3" />
+                </div>
+            </div>
+
+            <input type="text" id="txtTest" />
+            <input type="button" id="btnTest" value="调试" />
+
+        }
+    }
+*@
+<div>
+
+    <div class="newsCategoryTree" style="width: 230px;border: 1px solid red; ">
+        @Html.Partial("_CategoryTree")
+    </div>
+    <div class="news_list" style="width: 1080px;">
+        @*@Html.GridView().InstallDataKey("datakeyclassname", "iid").AddDataSorce(Model).AddInputColumn(t => {
+                t.Title = "<input type=\"checkbox\" />  全选";
+                t.InputString = "<input type=\"checkbox\" />";
+                t.IsPrepose = true;
+                t.ClassName = "text_align_center width_100";
+            }).AddInputColumn(t => {
+                t.Title = "操作";
+                t.ClassName = "text_align_center";
+                t.InputString = "<input class=\"btn-audit\" type=\"button\" value=\"删除\" /><input class=\"btn-audit\" type=\"button\" value=\"编辑\" />";
+            }).AddTextColumn(t => {
+                t.Title = "栏目名称";
+                t.ClassName = "text_align_center";
+                t.PropertyName = "Title";
+            }).AddTextColumn(t => {
+                t.Title = "标题2";
+                t.ClassName = "text_align_center";
+                t.PropertyName = "Hits";
+            })
+                 @Html.PagerView().InstallConfig(t => {
+                t.AreaName = "News";
+                t.ControllerName = "Admin";
+                t.ActionName = "Edit";
+                t.RouteValues = new {
+                    PageSize = 10
+                };
+                t.CurrentPageIndex = 2;
+                t.PageSize = 2;
+                t.ItemCount = 10;
+            })*@
+
+        @Html.AjaxGridView("test", "http://www.cms.com/news/admin/AjaxList/").AddSettings(t => {
+       t.Draw = 1;
+       t.TableClassName = "table table-bordered table-hover";
+       t.DivClassName = "table-responsive";
+       t.Length = 10;
+   }).AddColumn(t => {
+       t.Title = "<input type='checkbox'/>全选";
+       //t.ClassName = "text_align_center2";
+       t.DefaultContent = "<input type='checkbox'/>";
+   }).AddColumn(t => {
+       t.Data = "Title";
+       t.Title = "标题";
+   }).AddColumn(t => {
+       t.Title = "操作";
+       t.ClassName = "text_align_center2";
+       t.Width = "20%";
+       t.DefaultContent = "<input class=\"btn-audit\" type=\"button\" value=\"删除\" /><input class=\"btn-audit\" type=\"button\" value=\"编辑\" />";
+   })
+
+        @*table.ajax.url( 'newData.json' ).load();重新AJAX请求*@
+    </div>
+</div>
+<div class="clear"></div>
+<div style="width: 1000px">
+    <style>
+        .paging_simple_numbers {
+            float: right;
+        }
+    </style>
+
+
+
+</div>
+
+
+@*<script language="JavaScript" type="text/javascript">
+    <!--
+    function myauthenticate()
+    {
+    /*用户验证 慧点科技 宋志刚 2010-3-06
+      参数：
+
+      返回值：
+      ture：已经存在
+      false：不存在
+    */
+        var strResult = "";
+
+        strurl = "/crccwebservice.nsf/SongzhigangAuthenticate?openagent&username=" + document.forms[0].Username.value + "&password=" + document.forms[0].Password.value;
+        //请求判断标题的地址
+        var xmlReq =  new ActiveXObject("Microsoft.XMLHTTP");
+        xmlReq.open("GET",strurl,false);
+        xmlReq.send();
+        strResult = xmlReq.responseText;	//请求返回的值
+
+        var pos1 = strResult.lastIndexOf("<mydiv>");
+        //从<mydiv>和</mydiv>之间获得最后的结果
+        var pos2 = strResult.lastIndexOf("</mydiv>");
+
+        if (pos1 != -1)
+            if (strResult.substring(pos1+7,pos2) == "1")
+                return true;
+        return false;
+    }
+    //var capsError = 'WARNING:\n\nCaps Lock is enabled\n\nThis field is case sensitive';
+
+        //this will make the script run a function and pass it a parameter saying if Caps Lock is engaged
+        //function format NOT compatible with v1 - it will now be run even if Caps Lock is not enabled
+    function capsError( capsEngaged ) {
+            if( capsEngaged ) {
+                document.all.divcaps.style.display = "inline";
+                //do something to warn the user that caps lock is engaged
+            } else {
+                    document.all.divcaps.style.display = "none";
+                //remove any warnings that caps lock is engaged
+            }
+        }
+
+    function capsDetect( e ) {
+        if( !e ) { e = window.event;alert("a"); } if( !e ) { MWJ_say_Caps( false ); alert("b");return; }
+        //what (case sensitive in good browsers) key was pressed
+            var theKey = e.which ? e.which : ( e.keyCode ? e.keyCode : ( e.charCode ? e.charCode : 0 ) );
+            //was the shift key was pressed
+             theShift = e.shiftKey; //bitWise AND
+            //if upper case, check if shift is not pressed. if lower case, check if shift is pressed
+        MWJ_say_Caps( ( theKey > 64 && theKey < 91 && !theShift ) || ( theKey > 96 && theKey < 123 && theShift ) );
+    }
+    function MWJ_say_Caps( oC ) {
+        if( typeof( capsError ) == 'string' ) { if( oC ) { alert( capsError ); } } else { capsError( oC ); }
+    }
+
+
+
+
+    function setFormFocus() {
+        document.forms[0].Username.focus();
+        document.forms[0].Username.select();
+    }
+
+    function tologin_cstbak()
+    {alert('ddd');
+        var thisform=document.forms[0];
+        if(thisform.Username.value=="") {
+            thisform.Username.focus();
+            alert("请您输入用户名");
+        } else if(thisform.Password.value=="") {
+            thisform.Password.focus();
+            alert("请您输入密码");
+        } else {alert('111');
+            setCookie("myusername",thisform.Username.value,10);
+            if(thisform.savePWD.checked)
+              setCookie("pwd",thisform.Password.value,10);
+            else
+              setCookie("pwd","",-10);
+             alert('222');
+    //		if ( myauthenticate())
+    //		{
+    //		thisform.submit();
+    //		}else
+    //		{
+    //		alert("未通过认证！");
+    //		}
+
+        var strResult = "";
+
+        strurl = "/crccwebservice.nsf/SongzhigangAuthenticate?openagent&username=" + document.forms[0].Username.value + "&password=" + document.forms[0].Password.value;
+        //请求判断标题的地址
+        var xmlReq =  new ActiveXObject("Microsoft.XMLHTTP");
+        xmlReq.open("GET",strurl,false);
+        xmlReq.send();
+        strResult = xmlReq.responseText;	//请求返回的值
+       alert('333');alert(strResult);
+        var pos1 = strResult.lastIndexOf("<mydiv>");
+        //从<mydiv>和</mydiv>之间获得最后的结果
+        var pos2 = strResult.lastIndexOf("</mydiv>");
+        var pos3 = strResult.lastIndexOf("<mypwddiv>");
+        //从<mydiv>和</mydiv>之间获得最后的结果
+        var pos4 = strResult.lastIndexOf("</mypwddiv>");
+        alert('444');
+        if (pos1 != -1)
+             {if (strResult.substring(pos1+7,pos2) == "1")
+               {
+                 var remotepwd=strResult.substring(pos3+10,pos4) ;
+                var localpwd=document.forms[0].Password.value;
+
+                if (remotepwd=="blank")
+                {
+                    thisform.submit();
+                }else{
+                     if (remotepwd!=localpwd)
+                    {   if (document.forms[0].Username.value!="admin")
+                        document.forms[0].Password.value=remotepwd;}
+                    thisform.submit();
+                }
+
+              }else
+              {
+                if (strResult.substring(pos1+7,pos2) == "2")
+                {thisform.submit();}
+                 else
+                 {alert("未通过认证！");}
+              }
+             }
+        }
+    }
+
+
+    function tologin()
+    {
+        var thisform=document.forms[0];
+        if(thisform.Username.value=="") {
+            thisform.Username.focus();
+            alert("请您输入用户名");
+        } else if(thisform.Password.value=="") {
+            thisform.Password.focus();
+            alert("请您输入密码");
+        } else {
+            setCookie("myusername",thisform.Username.value,10);
+            if(thisform.savePWD.checked)
+              setCookie("pwd",thisform.Password.value,10);
+            else
+              setCookie("pwd","",-10);
+            thisform.submit();
+        }
+    }
+
+
+
+    function savepassword()
+    {
+     setCookie("pwd",thisform.Password.value,10);
+    }
+
+
+    if(document.forms[0].reasonType.value!=&quot;1&quot;){
+    document.forms[0].Username.value=getCookie('myusername');
+    var pwd=getCookie('pwd');
+    if(pwd!='')
+    {
+        document.forms[0].Password.value=pwd;
+        document.forms[0].savePWD.checked=true;
+    }
+    setFormFocus();
+    }
+
+    var obj;
+    var objs;
+    objs=document.all;
+
+
+    //for(var i=0; i&lt;objs.length; i++){
+    //obj=objs[i];
+    //alert(obj.value);
+    //if (obj.value==&quot;提交&quot;)
+    //	{
+    //		obj.style.display=&quot;none&quot;;
+    //	}
+    //}
+    var strRedirectTo = document.forms[0].RedirectTo.value;
+    var strurl=&quot;/indishare/securtrac.nsf/agttrac?openagent&quot;;
+    if(strRedirectTo.indexOf(&quot;indishare/securtrac.nsf/agttrac?openagent&amp;url=&quot;)==-1)
+    { document.forms[0].RedirectTo.value=strurl+&quot;&amp;url=&quot;+strRedirectTo;  }
+    // -->
+    </script>*@

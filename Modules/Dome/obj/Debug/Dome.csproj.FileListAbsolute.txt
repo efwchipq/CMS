@@ -1,0 +1,2 @@
+E:\Projects\Mr.肖.CMS\CMS\Modules\Dome\obj\Debug\Dome.csprojResolveAssemblyReference.cache
+D:\Mr.肖\Project\CMS\Modules\Dome\obj\Debug\Dome.csprojResolveAssemblyReference.cache

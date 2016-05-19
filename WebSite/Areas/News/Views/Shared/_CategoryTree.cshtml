@@ -1,0 +1,46 @@
+﻿@using Mvc.Extensions.Clients
+@{
+    Client.RegistScripts("/Scripts/Common/BootstrapTree/bootstrap-treeview.min.js");
+}
+<script>
+    function CreateNewsCategoryTree() {
+        // Some logic to retrieve, or generate tree structure
+        //http://www.htmleaf.com/jQuery/Menu-Navigation/201502141379.html 事件名称 nodeSelected -> onNodeSelected
+        var rundom = Math.random();
+        $.ajax({
+            type: "GET",
+            url: '@Url.Action("CategoryTree", "CategoryAdmin", new {
+                 Area = "News"
+             })',
+            data: { rundom: rundom },
+            dataType: "json",
+            success: function (resultData) {
+                $('#newscategory_bootstraptree').treeview({
+                    levels: 1,
+                    enableLinks: false,
+                    data: resultData//,
+                    //注册到应用层
+                    //onNodeSelected: function (event, data) {
+                    //    var $this = $(this);
+                    //    var $a = $("a", $this);
+                    //    if ($a) {
+                    //        location.href = $a.attr("href");
+                    //    }
+                    //}
+                });
+            },
+            error: function (message) {
+                alert(message);
+            }
+        });
+    }
+
+    $(function () {
+        CreateNewsCategoryTree();
+
+
+
+    });
+</script>
+
+<div id="newscategory_bootstraptree"></div>   

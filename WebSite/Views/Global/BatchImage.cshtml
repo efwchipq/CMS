@@ -1,0 +1,53 @@
+﻿@using Mvc.Extensions.HtmlExtensions
+
+@{
+    ViewBag.Title = "BatchImage";
+    Layout = "~/Views/Shared/_EmptyLayoutPage.cshtml";
+}
+
+<h2>批量上传图片</h2>
+<div id="dBatchImage">
+    @Html.WebUploader("BatchImage", new Global_WebUploader() {
+    AutoUpload = true,
+    Server = "/Global/TempFileUpLoadProcess"
+})
+</div>
+<div>
+    <input type="button" value="确定" id="batchImageSave" />
+    <input type="button" value="取消" id="batchImagecancel" />
+</div>
+
+<script>
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+    $(function () {
+        //取消
+        $("#batchImagecancel").click(function () {
+            window.parent.$.fn.colorbox.close();
+        });
+
+        //保存
+        $("#batchImageSave").click(function () {
+            var images = $("#BatchImage").val();
+            var name = GetQueryString("name");//获取传过来的编辑器唯一标识
+            var parentCkediter = window.parent.CKEDITOR.instances[name];
+            if (images && images.length > 0) {
+                //c8c75f9aaf3a4bcca4ba40d45c3433c2.png:/Files/Temp/c8c75f9aaf3a4bcca4ba40d45c3433c2.png;c02cf1e42ddc457fbb33b271185a7a21.png:/Files/Temp/c02cf1e42ddc457fbb33b271185a7a21.png;
+                var files = images.split(";");
+                for (var i = 0; i < files.length; i++) {
+                    var temp = files[i].split(":");
+                    if (temp.length != 2) {
+                        continue;
+                    }
+                    var virtualPath = temp[1];
+                    var element = window.parent.CKEDITOR.dom.element.createFromHtml("<p><img src='" + virtualPath + "' /></p>");
+                    parentCkediter.insertElement(element);
+                }
+            }
+            window.parent.$.fn.colorbox.close();
+        });
+    });
+</script>

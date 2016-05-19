@@ -1,0 +1,45 @@
+﻿@using WebSite.Models
+@model  IEnumerable<MenuInfo>
+
+@*但是如果当前页面有很多这样的相同逻辑的判断会怎么样呢？聪明的程序员肯定知道不能重复你自己的原则，所以我们就要进行重构，但是在View层怎么进行重构呢？使用@helper可以解决这个问题。*@
+@helper ShowLink(MenuInfo menu) {
+    if (string.IsNullOrEmpty(menu.AreasName)) {
+        @Html.ActionLink(menu.TabName, menu.ActionName, menu.ControllerName)
+    } else {
+        //区域
+        @Html.ActionLink(menu.TabName, menu.ActionName, new {
+       Controller = menu.ControllerName, Area = menu.AreasName
+   })
+    }
+}
+
+@{
+    if (Model.Any()) {
+        //一级目录
+        <ul>
+            @{
+        foreach (var menu in Model.Where(t => t.ParentID == Guid.Empty).OrderBy(t => t.Order)) {
+            <li>
+                @ShowLink(menu)
+                @*二级目录*@
+                <ul>
+                    @{
+            foreach (var twoMenu in Model.Where(t => t.ParentID == menu.ID).OrderBy(t => t.Order)) {
+                <li>
+                    @ShowLink(twoMenu)
+                </li>
+            }
+                    }
+                </ul>
+            </li>
+        }
+            }
+        </ul>
+    } else {
+        <ul>
+            <li>
+                <a href="@Request.Url.Host">首页</a>
+            </li>
+        </ul>
+    }
+}

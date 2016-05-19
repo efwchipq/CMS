@@ -1,0 +1,26 @@
+
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot'); /* IE9*/
+  src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.woff') format('woff'), /* chrome, firefox */
+  url('iconfont.ttf') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-shuziyi-copy:before { content: "\e604"; }
+.icon-shuzier:before { content: "\e641"; }
+.icon-shuzisan:before { content: "\e645"; }
+.icon-shuzisi:before { content: "\e646"; }
+.icon-shuziwu:before { content: "\e647"; }
+.icon-shuziliu:before { content: "\e643"; }
+.icon-shuziqi:before { content: "\e644"; }
+.icon-shuziba:before { content: "\e640"; }
+.icon-shuzijiu:before { content: "\e642"; }

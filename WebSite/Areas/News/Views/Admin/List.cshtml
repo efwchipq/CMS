@@ -1,0 +1,49 @@
+﻿@using Mvc.Extensions.Clients
+@using Mvc.Extensions.HtmlExtensions
+@model IEnumerable<Modules.News.Models.DataModels.BasicInformation>
+@{
+    Client.RegistCss("/Areas/News/Content/admin.css", 1000);
+    Client.RegistScripts("/Scripts/Common/ColorBox/jquery.colorbox.js");
+    Client.RegistCss("/Scripts/Common/ColorBox/colorbox.css");
+}
+
+<div>@ViewBag.Title</div>
+@ViewBag.Title2
+@Html.ActionLink("添加", "Edit")
+<script>
+    $(function () {
+        $(document).on('nodeSelected', "#newscategory_bootstraptree", function (event, data) {
+            var currentHref = data.href;
+            jQuery.dataTableLode(currentHref, "#test");
+        });
+    });
+</script>
+
+<div>
+
+    <div class="newsCategoryTree" style="width: 230px; border: 1px solid #dddddd; margin-right: 10px; ">
+        @Html.Partial("_CategoryTree")
+    </div>
+    <div class="news_list" style="width: 1080px;min-height: 600px;">
+        @Html.AjaxGridView("test", "http://www.cms.com/news/admin/AjaxList/").AddSettings(t => {
+       t.Draw = 1;
+       t.TableClassName = "table table-bordered table-hover min-hight600";
+       t.DivClassName = "table-responsive checkcontainer";
+       t.Length = 10;
+   }).AddColumn(t => {
+       t.Title = "<input type='checkbox' class='checkall' />全选";
+       //t.ClassName = "text_align_center2";
+       t.Width = "10%";
+       t.DefaultContent = "<input type='checkbox' class='checkself' />";
+   }).AddColumn(t => {
+       t.Data = "Title";
+       t.Title = "标题";
+   }).AddColumn(t => {
+       t.Title = "操作";
+       t.ClassName = "text_align_center2";
+       t.Width = "20%";
+       t.DefaultContent = "<input class=\"btn-audit\" type=\"button\" value=\"删除\" /><input class=\"btn-audit\" type=\"button\" value=\"编辑\" />";
+   })
+    </div>
+</div>
+<div class="clear"></div>

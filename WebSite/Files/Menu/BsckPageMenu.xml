@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--节点说明
+Items：最外层
+ItemClassOne：一级页面
+ItemClassTwo：二级页面
+AreasName：区域名称（空：不在区域内）
+ControllerName：控制器名称
+FunctionName：控制器内的方法名称
+TabName：页面名称，显示在导航栏中的名称
+TabImg:页面图片，缩略图
+-->
+<Items>
+  <ItemClassOne>
+    <TabRoute>
+      <ID>2E3D27F1-8453-4029-8F8D-E526020CD84C</ID>
+      <AreasName></AreasName>
+      <ControllerName>Home</ControllerName>
+      <ActionName>Index</ActionName>
+      <TabName>新闻页面-1</TabName>
+      <Order>1</Order>
+      <TabImg>/Files/BatchImgs/IMG_20151004_161416.jpg</TabImg>
+    </TabRoute>
+    <ItemClassTwo>
+      <TabRoute>
+        <ID>6EEDA264-46DA-4DDC-8291-D6A65A829C01</ID>
+        <AreasName>Article</AreasName>
+        <ControllerName>List</ControllerName>
+        <ActionName>Test</ActionName>
+        <TabName>新闻页面-1-1</TabName>
+        <Order>1</Order>
+        <TabImg>/Files/BatchImgs/IMG_20151004_161416.jpg</TabImg>
+      </TabRoute>
+    </ItemClassTwo>
+    <ItemClassTwo>
+      <TabRoute>
+        <ID>564582CA-89EA-40B7-8C90-AA42BF6CE770</ID>
+        <AreasName>Article</AreasName>
+        <ControllerName>List</ControllerName>
+        <ActionName>Test2</ActionName>
+        <TabName>新闻页面-1-2</TabName>
+        <Order>2</Order>
+        <TabImg>/Files/BatchImgs/IMG_20151004_161416.jpg</TabImg>
+      </TabRoute>
+    </ItemClassTwo>
+  </ItemClassOne>
+  <ItemClassOne>
+    <TabRoute>
+      <ID>19F426A3-54EA-499C-BDBD-14F218B547DE</ID>
+      <AreasName>Article</AreasName>
+      <ControllerName>List</ControllerName>
+      <ActionName>Test3</ActionName>
+      <TabName>新闻页面-2</TabName>
+      <Order>2</Order>
+      <TabImg>/Files/BatchImgs/IMG_20151004_161416.jpg</TabImg>
+    </TabRoute>
+    <ItemClassTwo>
+      <TabRoute>
+        <ID>D9D26250-F227-450D-BAAA-5E7F5B2357F4</ID>
+        <AreasName>Article</AreasName>
+        <ControllerName>List</ControllerName>
+        <ActionName>Test4</ActionName>
+        <TabName>新闻页面-2-1</TabName>
+        <Order>1</Order>
+        <TabImg>/Files/BatchImgs/IMG_20151004_161416.jpg</TabImg>
+      </TabRoute>
+    </ItemClassTwo>
+    <ItemClassTwo>
+      <TabRoute>
+        <ID>E8AF6513-5AC4-45F4-97C8-CA2237442FF7</ID>
+        <AreasName>Article</AreasName>
+        <ControllerName>List</ControllerName>
+        <ActionName>Test5</ActionName>
+        <TabName>新闻页面-2-2</TabName>
+        <Order>2</Order>
+        <TabImg>/Files/BatchImgs/IMG_20151004_161416.jpg</TabImg>
+      </TabRoute>
+    </ItemClassTwo>
+  </ItemClassOne>
+</Items>

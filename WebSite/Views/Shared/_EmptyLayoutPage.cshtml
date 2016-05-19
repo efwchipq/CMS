@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Common/globalstech.css")
+    @Styles.Render("~/Content/Common/backpage-globalstech.css")
+    @Client.RenderRegistCss()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/Common/WebScripts/jQueryExtensions.js")
+    @Scripts.Render("~/Scripts/Common/WebScripts/backpage-globalstech.js")
+    @Scripts.Render("~/Scripts/Common/WebScripts/globalstech.js")
+    @Client.RenderRegistScripts()
+</head>
+<body>
+    <div >
+        @RenderBody()
+    </div>
+    @Client.RenderScriptBlocks()
+    @RenderSection("StylePlaceholder", required: false)
+    @RenderSection("ScriptsPlaceholder", required: false)
+</body>
+</html>

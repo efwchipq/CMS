@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - 后台</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/Common/globalstech.css")
+    @Styles.Render("~/Content/Common/backpage-globalstech.css")
+    @Client.RenderRegistCss()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/Common/WebScripts/jQueryExtensions.js")
+    @Scripts.Render("~/Scripts/Common/WebScripts/backpage-globalstech.js")
+    @Scripts.Render("~/Scripts/Common/WebScripts/globalstech.js")
+    @Client.RenderRegistScripts()
+</head>
+
+<body>
+    <div style="padding-top: 50px;">
+        @*顶部*@
+        <div id="toplayout" class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <a href="javascript:void(0);" class="navbar-brand">CMS - 后台管理系统</a>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="javascript:void(0);">欢迎您：username</a></li>
+                        <li>@Html.ActionLink("前台", "Index", "Home")</li>
+                        <li>@Html.ActionLink("退出", "About", "Home")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        @*中间*@
+        <div id="middlelayout" class="middlelayout">
+            @*左边*@
+            <div id="leftlayout" class="leftlayout leftmenu">
+                <div class="leftlayout-top">
+                    &nbsp;&nbsp;&nbsp;&nbsp;后台管理系统导航
+                </div>
+                <div class="leftlayout-navigation">
+                    <div>
+                        <a target="imain" href="/news/admin/list/">文章管理</a>
+                    </div>
+                    <div>
+                        <a target="imain" href="/news/CategoryAdmin/list/">新闻栏目管理</a>
+                    </div>
+                    <div>
+                        <a target="imain" href="/news/admin/list/">回收站</a>
+                    </div>
+                </div>
+                @*<div class="back-menu" data-type="menu" data-menuurl="@Url.Action("BackMenus", new {
+                                                                     Controller = "Global",area=""
+                                                                 })"></div>*@
+            </div>
+            @*右边*@
+            <div id="rightlayout" class="rightlayout">
+                <div class="back-content">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        @*底部*@
+        <div id="bottomlayout" class="bottomlayout">
+            <div class="text-center">
+                <ul>
+                    <li><a href="javascript:void(0);">联系我们</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:void(0);">隐私声明</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:void(0);">法律声明</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:void(0);">在线调查</a></li>
+                    <li>|</li>
+                    <li><a href="javascript:void(0);">投诉咨询</a></li>
+                </ul>
+            </div>
+            <div class="text-center">
+                <span>
+                    XXXXXXXXXXX技术有限公司 版权所有&nbsp;Copyright &copy;
+                    <span data-type="year"></span>
+                    All Right Reserved&nbsp;
+                    <a href="http://www.miitbeian.gov.cn" target="_blank">京ICP备05004582号</a>
+                </span>
+            </div>
+            <div class="text-center">
+                <a href="javascript:void(0);" target="_blank">XXXXXXXXXXX技术有限公司</a>
+                制作维护
+            </div>
+        </div>
+    </div>
+    @Client.RenderScriptBlocks()
+    @RenderSection("StylePlaceholder", required: false)
+    @RenderSection("ScriptsPlaceholder", required: false)
+</body>
+</html>

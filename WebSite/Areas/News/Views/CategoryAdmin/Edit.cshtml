@@ -1,0 +1,56 @@
+﻿@using Mvc.Extensions.Clients
+@using Mvc.Extensions.HtmlExtensions
+@model Modules.News.Models.ViewModels.NewsCategoryView
+@{
+    ViewBag.Title = "Edit";
+    Client.RegistCss("/Areas/News/Content/admin.css", 1000);
+    Client.RegistScripts("/Scripts/Common/ColorBox/jquery.colorbox.js");
+    Client.RegistCss("/Scripts/Common/ColorBox/colorbox.css");
+}
+
+@*<h3>编辑新闻栏目</h3>*@
+@{
+    using (Html.BeginForm("Edit", "CategoryAdmin", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+        <div class="back-newscategory">
+            <div>
+                @Html.HiddenFor(t => t.ID)
+                @Html.HiddenFor(t => t.ParentID)
+            </div>
+            <div class="back-form-item">
+                <span class="back-form-title">新闻栏目名称：</span>
+                @Html.TextBoxFor(t => t.Name, new {
+               @class = "form-control"
+           })
+                <span class="required">*</span>
+                @Html.ValidationMessageFor(t => t.Name)
+            </div>
+            <div class="back-form-item">
+                <span class="back-form-title">显示名称：</span>
+                @Html.TextBoxFor(t => t.DisplayName, new {
+               @class = "form-control"
+           })
+                @Html.ValidationMessageFor(t => t.DisplayName)
+            </div>
+            <div class="back-form-item">
+                <span class="back-form-title">显示顺序：</span>
+                @Html.TextBoxFor(t => t.Order, new {
+               @class = "form-control"
+           })
+                <span class="required">*</span>
+                @Html.ValidationMessageFor(t => t.Order)
+            </div>
+            <div class="back-form-item">
+                @Html.TextEditorFor(t => t.Describe, true, new {
+               placeholder = "请输入新闻栏目描述..."
+           })
+            </div>
+            <div class="back-form-input">
+                <input type="submit" value="保存" class="btn_save" />
+                <input type="reset" value="重置" class="btn_cancel" />
+                <input type="button" value="返回" class="btn_cancel" />
+                <input type="button" value="删除" class="btn_delete" />
+            </div>
+        </div>
+    }
+}
